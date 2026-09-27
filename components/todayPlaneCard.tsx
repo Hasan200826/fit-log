@@ -61,7 +61,7 @@ const TodayPlanCard = ({ plan}: ExerciseCardProps) => {
         <button
           className="flex items-center gap-1 rounded-full bg-lime-400 px-3 py-1.5 text-[10px] font-semibold text-black transition hover:bg-lime-300"
         >
-          Mark as Done
+         ✓ Mark as Done
         </button>
 
         <TodayCloseBtn plan={plan}/>
