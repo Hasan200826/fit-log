@@ -2,7 +2,7 @@
 
 import SavedBtn from '@/components/SavedBtn';
 import TodayPlanBtn from '@/components/TodayPlanBtn';
-import { IExercise } from '@/type/ExacisaceType';
+// import { IExercise } from '@/type/ExacisaceType';
 import Image from 'next/image';
 import React from 'react';
 interface PageProps {
