@@ -2,7 +2,6 @@
 
 import SavedBtn from '@/components/SavedBtn';
 import TodayPlanBtn from '@/components/TodayPlanBtn';
-// import { IExercise } from '@/type/ExacisaceType';
 import Image from 'next/image';
 import React from 'react';
 interface PageProps {
@@ -11,18 +10,12 @@ interface PageProps {
   }>;
 }
 
-// const ExasisePromis = async()=>{
-//   const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`)
-//   return res.json()
-// }
+
 
 async function Page({params}:PageProps) {
   const { id } = await params;
   const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`)
   const findExasise = await res.json()
-  // const ExasisePromis = res.json()
-  // const findExasise = await ExasisePromis()
-  // const findExasise =Exasises.find((Exasise:IExercise)=> Number(Exasise.id) === Number(id))
    return (
     <div className="min-h-screen bg-[#0b0d0f] p-4 text-white sm:p-8">
       <div className="mx-auto max-w-7xl rounded-3xl bg-[#0b0d0f]">
