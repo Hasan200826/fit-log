@@ -5,8 +5,8 @@ import {DataProvider} from '@/contextfolder/sheredata'
 import ToDayPlan from './ToDayPlan';
 import SaveBox from './SaveBox';
 const MyPlaneDeshBord = () => {
-  const [MyPlaneBtn,setMyPlaneBtn]=useState('todayplan');
-  const {todayPlan,settodayPlan,saved,setSaved} = useContext(DataProvider)
+  // const [MyPlaneBtn,setMyPlaneBtn]=useState('todayplan');
+  const {todayPlan,settodayPlan,saved,setSaved,MyPlaneBtn,setMyPlaneBtn} = useContext(DataProvider)
 
   console.log('todayplane=',todayPlan);
   console.log('saved=',saved);

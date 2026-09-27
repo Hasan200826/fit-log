@@ -5,16 +5,30 @@ import {DataProvider} from '@/contextfolder/sheredata'
 import { IExercise } from '@/type/ExacisaceType';
 
 const PlaneHeading = () => {
-   const { todayPlan, saved } = useContext(DataProvider); 
+   const { todayPlan, saved,MyPlaneBtn } = useContext(DataProvider); 
    const totleDuration =(int:number)=>{
-     const totletodayPlan = todayPlan.reduce((sum:number,num:IExercise)=>sum + num.duration,0);
-     const totleSaved = saved.reduce((sum:number,num:IExercise)=>sum+ num.duration,0);
-     return int+totletodayPlan+totleSaved
+    if(MyPlaneBtn=== 'todayplan') {
+      const totletodayPlan = todayPlan.reduce((sum:number,num:IExercise)=>sum + num.duration,0);
+      return totletodayPlan
+    }else{
+      const totleSaved = saved.reduce((sum:number,num:IExercise)=>sum+ num.duration,0);
+      return totleSaved
+    }
+     
+     
+    //  return int+totletodayPlan+totleSaved
    }
    const totleCalorise =(int:number)=>{
-     const totletodayPlan = todayPlan.reduce((sum:number,num:IExercise)=>sum + num.caloriesBurned,0);
-     const totleSaved = saved.reduce((sum:number,num:IExercise)=>sum+ num.caloriesBurned,0);
-     return int+totletodayPlan+totleSaved
+     if(MyPlaneBtn=== 'todayplan'){
+      const totletodayPlan = todayPlan.reduce((sum:number,num:IExercise)=>sum + num.caloriesBurned,0);
+      return totletodayPlan
+     }else{
+       const totleSaved = saved.reduce((sum:number,num:IExercise)=>sum+ num.caloriesBurned,0);
+       return totleSaved
+     }
+     
+    
+    //  return int+totletodayPlan+totleSaved
    }
  return (
     <div className=' container mx-auto capitalize text-center md:text-left'>
@@ -25,7 +39,7 @@ const PlaneHeading = () => {
       <div className=' bg-gray-800 rounded-[10px] p-5 flex justify-between'>
         <div className=' w-60'>
            <h4 className=' capitalize text-gray-500'>exercise</h4>
-           <p className=' text-4xl font-bold text-[#C2F800]'>{todayPlan.length+saved.length}</p>
+           <p className=' text-4xl font-bold text-[#C2F800]'>{MyPlaneBtn ==='todayplan'?todayPlan.length:saved.length}</p>
         </div>
         <div className=' w-60'>
            <h4 className=' capitalize text-gray-500'>munites</h4>
