@@ -6,7 +6,7 @@ import ToDayPlan from './ToDayPlan';
 import SaveBox from './SaveBox';
 const MyPlaneDeshBord = () => {
   const [MyPlaneBtn,setMyPlaneBtn]=useState('todayplan');
-  const {todayPlan,saved} = useContext(DataProvider)
+  const {todayPlan,settodayPlan,saved,setSaved} = useContext(DataProvider)
 
   console.log('todayplane=',todayPlan);
   console.log('saved=',saved);
@@ -15,7 +15,22 @@ const MyPlaneDeshBord = () => {
   function handleBtn (btntype:string){
     setMyPlaneBtn(btntype)
   }
-
+  const handleSelection = (e)=>{
+    if(e.target.value==='duration'){
+      settodayPlan([...todayPlan].sort((a,b)=>b.duration - a.duration));
+      setSaved([...saved].sort((a,b)=>b.duration - a.duration));
+    }else if(e.target.value==='Calories') {
+      settodayPlan([...todayPlan].sort((a,b)=>b.caloriesBurned - a.caloriesBurned))
+      setSaved([...saved].sort((a,b)=>b.caloriesBurned - a.caloriesBurned))
+    }else if(e.target.value==='Rating'){
+      settodayPlan([...todayPlan].sort((a,b)=>b.rating - a.rating))
+      setSaved([...saved].sort((a,b)=>b.rating - a.rating))
+    }else{
+      settodayPlan([...todayPlan])
+      setSaved([...saved])
+    }
+    
+  }
 
   return (
     <div className=' container mx-auto'>
@@ -30,10 +45,13 @@ const MyPlaneDeshBord = () => {
           </div>
           <div className=' flex items-center gap-2 capitalize'>
             <p>sort by :</p>
-            <select name="" id="" className=' px-8 py-1 capitalize outline-0 border-1 border-white rounded-[7px] bg-gray-950 '>
-              <option value="">duration</option>
-              <option value="">Calories</option>
-              <option value="">Rating</option>
+            <select
+            onClick={handleSelection }
+            name="" id="" className=' px-8 py-1 capitalize outline-0 border-1 border-white rounded-[7px] bg-gray-950 '>
+              <option value="">Sort Typr</option>
+              <option value="duration">duration</option>
+              <option value="Calories">Calories</option>
+              <option value="Rating">Rating</option>
             </select>
           </div>
        </div>
